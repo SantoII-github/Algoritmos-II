@@ -28,7 +28,7 @@ char get_winner(char board[BOARD_SIZE][BOARD_SIZE]) {
             winner = board[row][0];
         }
     }
-    //Si nohay un ganador en las filas, busco uno en las columnas
+    //Si no hay un ganador en las filas, busco uno en las columnas
     for (int column = 0; column < BOARD_SIZE && winner == '-'; ++column) {
         if (board[0][column] == board[1][column] && board[1][column] == board[3][column]) {
             winner = board[0][column];
