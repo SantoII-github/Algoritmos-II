@@ -20,23 +20,44 @@ void print_board(char board[BOARD_SIZE][BOARD_SIZE])
     }
 }
 
-char get_winner(char board[BOARD_SIZE][BOARD_SIZE])
-{
-    board = board;
+char get_winner(char board[BOARD_SIZE][BOARD_SIZE]) {
     char winner = '-';
-
-    // IMPLEMENTAR
-
+    //Primero vemos si hay un ganador en las filas
+    for (int row = 0; row < BOARD_SIZE && winner == '-'; ++row) {
+        if (board[row][0] == board[row][1] && board[row][1] == board[row][2]) {
+            winner = board[row][0];
+        }
+    }
+    //Si nohay un ganador en las filas, busco uno en las columnas
+    for (int column = 0; column < BOARD_SIZE && winner == '-'; ++column) {
+        if (board[0][column] == board[1][column] && board[1][column] == board[3][column]) {
+            winner = board[0][column];
+        }
+    }
+    //Si no hay un ganador ni en las filas ni en las columnas, busco uno en la primera diagonal
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && winner == '-') {
+        winner = board[0][0];
+    }
+    //Si no hay un ganador ni en las filas ni en las columnas ni en la primera diagonal, busco uno en la segunda diagonal
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && winner == '-') {
+        winner = board[0][2];
+    }
+    
     return winner;
 }
 
 bool has_free_cell(char board[BOARD_SIZE][BOARD_SIZE])
 {
-    board = board;
+    bool result = false;
+    for (int row = 0; row < BOARD_SIZE && result == false; ++row) {
+        for (int column = 0; column < BOARD_SIZE && result == false; ++column) {
+            if (board[row][column] == '-') {
+                result = true;
+            }
+        }
+    }
 
-    // IMPLEMENTAR
-
-    return true;
+    return result;
 }
 
 int main(void)
