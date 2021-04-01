@@ -44,7 +44,7 @@ unsigned int array_from_file(int array[],
     FILE *fptr; //Creo una variable para guardar el archivo.
     fptr = fopen(filepath, "r"); //Abro el archivo con el filepath que recibe la funcion.
     if (fptr == NULL) {            //Salgo del programa si hay un error abriendo el archivo.
-        printf("Error opening file.\n");
+        printf("Error opening file. Check if there are any typos in the filepath provided.\n");
         exit(EXIT_FAILURE);
     }
 
