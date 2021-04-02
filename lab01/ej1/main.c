@@ -68,7 +68,7 @@ void array_dump(int a[], unsigned int length) {
     printf("[");
     
     if (length != 0){ //Si la longitud del arreglo es distinta de 0 imprime cada elemento del arreglo.
-        for(unsigned int index = 0; index < length-2; ++index) {
+        for(unsigned int index = 0; index < length-1; ++index) {
             printf("%d, ", a[index]);
         }
         printf("%d", a[length-1]);

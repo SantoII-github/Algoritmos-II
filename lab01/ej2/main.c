@@ -38,29 +38,43 @@ char *parse_filepath(int argc, char *argv[]) {
     return (result);
 }
 
-unsigned int array_from_file(int array[],
-           unsigned int max_size,
-           const char *filepath) {
-    //your code here!!!
-
-}
-
 void array_dump(int a[], unsigned int length) {
-    //your code here!!!!!
+    printf("[");
+    
+    if (length != 0){ //Si la longitud del arreglo es distinta de 0 imprime cada elemento del arreglo.
+        for(unsigned int index = 0; index < length-1; ++index) {
+            printf("%d, ", a[index]);
+        }
+        printf("%d", a[length-1]);
+    }
+
+    printf("]\n");
+}
+
+int input_int(void) {
+    int temp;
+    printf("Input an integer.\n");
+    scanf("%d", &temp);
+
+    return temp;
+}
+
+void input_array(int array[], unsigned int array_size) {
+    for (unsigned int i = 0; i < array_size; i++) {
+        array[i] = input_int();
+    }
 }
 
 
-int main(int argc, char *argv[]) {
-    char *filepath = NULL;
 
-    /* parse the filepath given in command line arguments */
-    filepath = parse_filepath(argc, argv);
-    
+int main() {
     /* create an array of MAX_SIZE elements */
     int array[MAX_SIZE];
+    unsigned int length;
     
-    /* parse the file to fill the array and obtain the actual length */
-    unsigned int length = array_from_file(array, MAX_SIZE, filepath);
+    printf("Input how many elements your array contains.\n");
+    scanf("%u", &length);
+    input_array(array, length);
     
     /*dumping the array*/
     array_dump(array, length);

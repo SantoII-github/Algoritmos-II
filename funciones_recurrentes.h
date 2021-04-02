@@ -23,8 +23,21 @@ void input_array(int array[], unsigned int array_size) {
     }
 }
 
-void print_array(int array[], unsigned int array_size) {
+void print_array(int array[], unsigned int array_size) { //Usar array_dump
     for (unsigned int i = 0; i < array_size; i++) {
         printf("array[%d] : %d\n", i, array[i]);
     }
+}
+
+void array_dump(int a[], unsigned int length) {
+    printf("[");
+    
+    if (length != 0){
+        for(unsigned int index = 0; index < length-1; ++index) {
+            printf("%d, ", a[index]);
+        }
+        printf("%d", a[length-1]);
+    }
+
+    printf("]\n");
 }
