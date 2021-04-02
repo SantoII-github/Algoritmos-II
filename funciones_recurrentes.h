@@ -9,6 +9,14 @@ int input_int(void) {
     return temp;
 }
 
+unsigned int input_unsigned_int(void) {
+    unsigned int temp;
+    printf("Ingrese un entero positivo.\n");
+    scanf("%u", &temp);
+
+    return temp;
+}
+
 void input_array(int array[], unsigned int array_size) {
     for (unsigned int i = 0; i < array_size; i++) {
         array[i] = input_int();
