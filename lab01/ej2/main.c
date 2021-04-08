@@ -51,30 +51,25 @@ void array_dump(int a[], unsigned int length) {
     printf("]\n");
 }
 
-int input_int(void) {
-    int temp;
-    printf("Input an integer.\n");
-    scanf("%d", &temp);
-
-    return temp;
-}
-
-void input_array(int array[], unsigned int array_size) {
-    for (unsigned int i = 0; i < array_size; i++) {
-        array[i] = input_int();
+unsigned int array_from_input(int array[], unsigned int max_size) {
+    unsigned int length;
+    printf("Input your array's length\n");
+    scanf("%u", &length);
+    
+    printf("Input your array's elements\n");
+    for (unsigned int i = 0; i < length && i < max_size; ++i) {
+        scanf("%d", &array[i]);
     }
+
+    return length;
 }
-
-
 
 int main() {
     /* create an array of MAX_SIZE elements */
     int array[MAX_SIZE];
-    unsigned int length;
     
-    printf("Input how many elements your array contains.\n");
-    scanf("%u", &length);
-    input_array(array, length);
+    /* parse the file to fill the array and obtain the actual length */
+    unsigned int length = array_from_input(array, MAX_SIZE);
     
     /*dumping the array*/
     array_dump(array, length);
