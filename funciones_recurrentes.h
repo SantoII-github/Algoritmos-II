@@ -41,3 +41,16 @@ void array_dump(int a[], unsigned int length) {
 
     printf("]\n");
 }
+
+unsigned int array_from_input(int array[], unsigned int max_size) {
+    unsigned int length;
+    printf("Input your array's length.\n");
+    scanf("%u", &length);
+    
+    printf("Input your array's elements.\n");
+    for (unsigned int i = 0; i < length && i < max_size; ++i) {
+        scanf("%d", &array[i]);
+    }
+
+    return length;
+}
