@@ -9,7 +9,25 @@
 
 
 static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
-    /* Needs implementation */
+    unsigned int i,j, ppiv;
+    ppiv = izq;
+    i = izq + 1;
+    j = der;
+    while (i <= j) {
+        if (goes_before(a[i], a[ppiv])) {
+            i = i + 1;
+        }
+        else if (goes_before(a[ppiv],a[j])) {
+            j = j - 1;
+        }
+        else if (goes_before(a[ppiv], a[i]) && goes_before(a[j], a[ppiv])) {
+            swap(a, i, j);
+        }
+    }
+    swap(a, ppiv, j);
+    ppiv = j;
+
+    return ppiv;
 
     /* Permutes elements of a[izq..der] and returns pivot such that:
      - izq <= pivot <= der
@@ -19,8 +37,12 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
 }
 
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
-    /* copiá acá la implementación que hiciste en el ejercicio 3 */
-
+    unsigned int ppiv;
+    if (der > izq) {
+        ppiv = partition(a, izq, der);
+        quick_sort_rec(a, izq, (ppiv == 0u) ? 0u : ppiv - 1u);
+        quick_sort_rec(a, ppiv+1, der);
+    }
 }
 
 void quick_sort(int a[], unsigned int length) {
