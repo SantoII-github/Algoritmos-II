@@ -89,8 +89,6 @@ int main(int argc, char *argv[]) {
     max_monthly_rainfall_peryear(array, output_max_monthly_rainfall);
     printf("These are the months with the most rainfall per year;\n\n");
     print_max_monthly_rainfall_peryear(output_max_monthly_rainfall);
-    
-
 
     return (EXIT_SUCCESS);
 }
