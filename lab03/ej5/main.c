@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
     /* parse the filepath given in command line arguments */
     filepath = parse_filepath(argc, argv);
 
-    /* parse the file to load de players */
+    /* parse the file to load the players */
     unsigned int length = process_file(filepath, atp);
 
     /* create a copy of the array, to do some checks later */
