@@ -7,6 +7,12 @@
 #include <stdbool.h>
 #include "player.h"
 
+/** 
+ * @brief Exchanges elements of array 'a' in the given positions 'i' and 'j'
+ *        Array remains the same if the two positions are the same
+ */
+void swap(player_t a[], unsigned int i, unsigned int j);
+
 /**
  * @brief Returns true if player 'x' goes before player 'y' in a sorted array of players.
  *
@@ -38,6 +44,5 @@ bool array_is_sorted(player_t atp[], unsigned int length);
  * @param[in]      length  Length of players array
  */
 void sort(player_t a[], unsigned int length);
-
 
 #endif

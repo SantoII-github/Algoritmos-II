@@ -16,7 +16,7 @@ void array_copy(player_t copy[], player_t array[], unsigned int length) {
 }
 
 /**
- * @brief counts the amaount of players which have the same name as 'value' present in Array 'a'
+ * @brief counts the amount of players which have the same name as 'value' present in Array 'a'
  *
  * @param[in]  a       Players array
  * @param[in]  length  Players array length
