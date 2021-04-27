@@ -8,7 +8,7 @@
 #define EXPECTED_WEATHER_FILE_FORMAT "%d %d %d %u %u %u"
 #include <stdio.h>
 
-/** @brief Type used to represent a weather mesuarement.*/
+/** @brief Type used to represent a weather measurement.*/
 typedef struct _weather
 {
     int _average_temp;
@@ -20,7 +20,7 @@ typedef struct _weather
 } Weather;
 
 /**
- * @brief reads weather mesureament from file line
+ * @brief reads weather measurement from file line
  * @details
  * Weather file line must contain:
  * <int> <int> <int> <unsigned int> <unsigned int> <unsigned int>
