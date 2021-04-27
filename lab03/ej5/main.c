@@ -108,3 +108,10 @@ int main(int argc, char *argv[]) {
     destroy(atp, length);
     return (EXIT_SUCCESS);
 }
+
+/**
+ *  La versión con punteros es consistentemente más rápida.
+ *  Los intercambios son más eficientes porque no se hacen copias de 
+ *  los valores que van a ser intercambiados.
+ *  Se llama a destroy para liberar la memoria asignada a los punteros.
+ */
