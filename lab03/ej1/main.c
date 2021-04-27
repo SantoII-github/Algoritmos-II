@@ -81,13 +81,13 @@ int main(int argc, char *argv[]) {
     /* Print the highest temperature registered per year */
     int output_maxtemp[YEARS];
     max_temp_peryear(array, output_maxtemp);
-    printf("These are the highest temperatures registered per year:\n");
+    printf("These are the highest temperatures registered per year:\n\n");
     print_max_temp_peryear(output_maxtemp);
-    
+    printf("\n");
     /* Print the month that with the most rainfall per year */
     t_month output_max_monthly_rainfall[YEARS];
     max_monthly_rainfall_peryear(array, output_max_monthly_rainfall);
-    printf("These are the months with the most rainfall per year;\n\n");
+    printf("These are the months with the most rainfall per year:\n\n");
     print_max_monthly_rainfall_peryear(output_max_monthly_rainfall);
 
     return (EXIT_SUCCESS);
