@@ -1,12 +1,15 @@
 #include <stdio.h>
 
-struct _counter {
-    unsigned int count;
-};
+typedef int list_elem;
 
-typedef struct _counter * counter;
+typedef struct list_node {
+    list_elem elem;
+    struct list_node *next;
+} node;
+
+typedef struct list_node * list;
 
 int main(void) {
-    printf("%lu", (unsigned long)sizeof(counter));
+    printf("%lu", (unsigned long)sizeof(list));
     return 0;
 }
