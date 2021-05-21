@@ -27,7 +27,8 @@ hanoi_t hanoi_init(unsigned int disk_count) {
     hanoi_t hanoi = malloc(sizeof(struct _hanoi));
     assert(hanoi != NULL);
     hanoi->aux = stack_empty();
-    hanoi->target = NULL;
+    hanoi->target = stack_empty(); //Mine, original was = NULL;
+    hanoi->source = stack_empty(); //Mine
     hanoi->disk_count = disk_count;
     for (unsigned int i = disk_count; i > 0; --i) {
         hanoi->source = stack_push(hanoi->source, i);
@@ -46,6 +47,9 @@ void hanoi_print(hanoi_t hanoi) {
 
 hanoi_t hanoi_destroy(hanoi_t hanoi) {
     assert(hanoi != NULL);
+    hanoi->source = (stack_destroy(hanoi->source)); //Mine
+    hanoi->aux = (stack_destroy(hanoi->aux)); //Mine
+    hanoi->target = (stack_destroy(hanoi->target)); //Mine
     free(hanoi);
     return NULL;
 }

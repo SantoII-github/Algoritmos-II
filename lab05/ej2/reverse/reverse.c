@@ -70,7 +70,11 @@ int main(int argc, char *argv[]) {
       s = stack_pop(s);
   }
 
+  /* Destroy the stack */
+  stack_destroy(s);
+  
   printf("Reversed: ");
   array_dump(new_array, length);
+  free(new_array);
   return (EXIT_SUCCESS);
 }

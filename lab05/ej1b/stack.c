@@ -8,8 +8,13 @@ struct _s_stack {
     struct _s_stack *next;
 };
 
+/** La manera más eficiente de hacerlo consiste en un nodo especial
+ *  al principio del stack, que es el único que tiene la propiedad size.
+ *  sin embargo, es tarde, estoy cansado, y tengo covid.
+ */
+
 stack stack_empty() {
-    stack s= malloc(sizeof(stack));
+    stack s = malloc(sizeof(stack));
     s->size = 0;
     return s;
 }
