@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
     printf("raiz: %d\n minimo: %d\n maximo: %d\n", abb_root(tree),
                                                    abb_min(tree),
                                                    abb_max(tree));
-
+    
     tree = abb_destroy(tree);
 
     return (EXIT_SUCCESS);
