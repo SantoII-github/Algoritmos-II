@@ -40,9 +40,7 @@ static bool check_smaller(abb_elem e, abb tree) {
 
 static bool invrep(abb tree) {
     bool res = true;
-    if (tree == NULL) {
-        res = true;
-    } else {
+    if (tree != NULL) {
         res = check_greater(tree->elem, tree->left) &&
                 check_smaller(tree->elem, tree->right) &&
                 invrep(tree->left) && invrep(tree->right);
@@ -50,6 +48,7 @@ static bool invrep(abb tree) {
 
     return res;
 }
+
 abb abb_empty(void) {
     abb tree;
 
@@ -117,44 +116,43 @@ unsigned int abb_length(abb tree) {
     return length;
 }
 
-static abb_elem inorder_successor(abb tree) {
-    abb pointer;
-    abb_elem inorder_successor;
-    // Empiezo en la rama derecha de donde encontré e, y me muevo a la izq lo max
-    pointer = tree->right;
-    while (pointer->left != NULL) {
-        pointer = pointer->left;
-    }
-    inorder_successor = pointer->elem;
-    free(pointer);
+static abb minValueNode(abb tree) {
+    abb current = tree;
 
-    return inorder_successor;
+    while(current->left != NULL) {
+        current = current->left;
+    }
+    return current;
 }
 
 abb abb_remove(abb tree, abb_elem e) {
     assert(invrep(tree));
-    // Si tree es vacío, no se ejecuta nada y devuelve NULL
-    if(tree != NULL){
-        // Si e < tree->elem, lo busco en abb left
+
+    if (tree != NULL) {
         if(elem_less(e, tree->elem)) {
-            tree = abb_remove(tree->left, e);
-        // Si tree->elem < e, lo busco en abb right
+            tree->left = abb_remove(tree->left, e);
         }else if(elem_less(tree->elem, e)) {
-            tree = abb_remove(tree->right, e);
-        // Si tree->elem = e, uso el algoritmo para eliminarlo
+            tree->right = abb_remove(tree->right, e);
         }else if(elem_eq(tree->elem, e)) {
-            // Si es una hoja lo borro directamente, si sólo tiene abb derecho lo reemplazo por su hijo
+            // Nodo hoja o sólo con abb derecho
             if(tree->left == NULL) {
+                abb temp = tree;
                 tree = tree->right;
-            // Si sólo tiene abb izq lo reemplazo por su hijo
+                free(temp);
+            // Nodo con solo abb izquierdo
             }else if(tree->right == NULL) {
+                abb temp = tree;
                 tree = tree->left;
-            // Si tiene dos hojas, guardo el valor mínimo del abb der para reemplazar el nodo.
-            }else{
-                tree->elem = inorder_successor(tree);
+                free(temp);
+            // Nodo con dos hijos
+            }else {
+                abb temp = minValueNode(tree->right);
+                tree->elem = temp->elem;
+                tree->right = abb_remove(tree->right, temp->elem);
             }
         }
     }
+
     assert(invrep(tree) && !abb_exists(tree, e));
     return tree;
 }
@@ -202,8 +200,7 @@ void abb_dump(abb tree) {
     }
 }
 */
-void abb_dump_rec(abb tree, int space) {
-    assert(invrep(tree));
+static void abb_dump_rec(abb tree, int space) {
     // Caso base
     if (tree == NULL)
         return;
@@ -225,6 +222,7 @@ void abb_dump_rec(abb tree, int space) {
 }
 
 void abb_dump(abb tree) {
+    assert(invrep(tree));
     abb_dump_rec(tree, 0);
 }
 

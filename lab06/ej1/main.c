@@ -67,7 +67,6 @@ int main(int argc, char *argv[]) {
 
     /* parse the file to obtain an abb with the elements */
     abb tree = abb_from_file(filepath);
-
     /*dumping the tree*/
     abb_dump(tree);
     printf("\n");
