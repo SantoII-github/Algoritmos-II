@@ -27,15 +27,20 @@ stack stack_push(stack s, stack_elem e) {
     return s;
 }
 
-// No sé que anda mal acá. Compila pero no funciona con palindrome.c
 stack stack_pop(stack s) {
     assert(s != NULL);
     stack last = s;
-    while (last->next != NULL) {
-        last = last->next;
+    if(s->next == NULL) {
+        free(last);
+        last = NULL;
+        s = NULL;
+    }else{
+        while (last->next->next != NULL){
+            last = last->next;
+        }
+        free(last->next);
+        last->next = NULL;
     }
-    free(last);
-    last = NULL;
     return s;
 }
 
@@ -49,7 +54,7 @@ unsigned int stack_size(stack s) {
     return count;
 }
 
-// No sé que anda mal acá. Compila pero no funciona con palindrome.c
+
 stack_elem stack_top(stack s) {
     assert(s != NULL);
     stack_elem e;
