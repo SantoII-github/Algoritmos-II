@@ -47,11 +47,14 @@ set set_add(set s, set_elem e) {
 }
 
 set set_clone(set s) {
-    /*
-     * TODO: COMPLETAR
-     *
-     */
-    return s;
+    set copy = set_empty();
+    set node = s;
+    while(node != NULL) {
+        copy = set_add(copy, item_clone(node->elem));
+        node = node->next;
+    }
+    assert(set_cardinal(copy) == set_cardinal(s) && (copy != s || set_is_empty(s)));
+    return copy;
 }
 
 /* OPERATIONS   */
