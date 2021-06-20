@@ -77,4 +77,3 @@ amount_t change_making_dyn(currency_t charge, coin_t *coins, unsigned int n_coin
     tabla = destroy_tabla(tabla);
     return res;
 }
-
